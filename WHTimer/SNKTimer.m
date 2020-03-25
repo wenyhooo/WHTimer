@@ -7,16 +7,11 @@
 //
 
 #import "SNKTimer.h"
-
-
 @interface  SNKTimerProxy : NSProxy
-
 @property(nonatomic, weak) id target;
-
 @end
 
 @implementation SNKTimerProxy
-
 - (nullable NSMethodSignature *)methodSignatureForSelector:(SEL)sel
 {
     return [_target methodSignatureForSelector:sel];

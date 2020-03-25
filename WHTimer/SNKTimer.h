@@ -12,7 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 //页面退出时 定时无需手动管理
-
 @interface SNKTimer : NSObject
 
 //三种定时器  相关runloop 调用者自行设置 启动
