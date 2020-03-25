@@ -16,7 +16,6 @@
 		FE0CBEA22429DECD006D3D83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0CBEA12429DECD006D3D83 /* main.m */; };
 		FE0CBED02429E200006D3D83 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0CBECE2429E200006D3D83 /* SecondViewController.m */; };
 		FE0CBED42429E38F006D3D83 /* SNKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0CBED32429E38F006D3D83 /* SNKTimer.m */; };
-		FEAFE619242B01B100B0F98A /* NSObject+SNKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAFE618242B01B100B0F98A /* NSObject+SNKTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +35,6 @@
 		FE0CBECE2429E200006D3D83 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		FE0CBED22429E38F006D3D83 /* SNKTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNKTimer.h; sourceTree = "<group>"; };
 		FE0CBED32429E38F006D3D83 /* SNKTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNKTimer.m; sourceTree = "<group>"; };
-		FEAFE617242B01B100B0F98A /* NSObject+SNKTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SNKTimer.h"; sourceTree = "<group>"; };
-		FEAFE618242B01B100B0F98A /* NSObject+SNKTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SNKTimer.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +77,6 @@
 				FE0CBECE2429E200006D3D83 /* SecondViewController.m */,
 				FE0CBED22429E38F006D3D83 /* SNKTimer.h */,
 				FE0CBED32429E38F006D3D83 /* SNKTimer.m */,
-				FEAFE617242B01B100B0F98A /* NSObject+SNKTimer.h */,
-				FEAFE618242B01B100B0F98A /* NSObject+SNKTimer.m */,
 				FE0CBE982429DECB006D3D83 /* Main.storyboard */,
 				FE0CBE9B2429DECD006D3D83 /* Assets.xcassets */,
 				FE0CBE9D2429DECD006D3D83 /* LaunchScreen.storyboard */,
@@ -166,7 +161,6 @@
 				FE0CBE912429DECB006D3D83 /* AppDelegate.m in Sources */,
 				FE0CBEA22429DECD006D3D83 /* main.m in Sources */,
 				FE0CBED42429E38F006D3D83 /* SNKTimer.m in Sources */,
-				FEAFE619242B01B100B0F98A /* NSObject+SNKTimer.m in Sources */,
 				FE0CBE942429DECB006D3D83 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
