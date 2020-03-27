@@ -30,7 +30,6 @@
 @property(nonatomic, strong) SNKTimerProxy *timerProxy;//中间键
 
 @property(nonatomic, copy) void (^linkCallback)(CADisplayLink *displayLink);
-@property(nonatomic, copy) void (^timerCallback)(NSTimer *timer);
 
 @end
 
@@ -39,7 +38,6 @@
 //MARK:NSTimer
 - (SNKTimer *)snk_timerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats callback:(void (^)(NSTimer *timer))callback
 {
-    _timerCallback =  callback;
     _timerProxy = [SNKTimerProxy alloc];
     _timerProxy.target = self;
     _timer = [NSTimer timerWithTimeInterval:interval target:_timerProxy selector:@selector(timerIntervalAction:) userInfo:callback repeats:repeats];
@@ -48,10 +46,8 @@
 
 - (SNKTimer *)snk_scheduledTimerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats callback:(void (^)(NSTimer *timer))callback
 {
-    _timerCallback =  callback;
     _timerProxy = [SNKTimerProxy alloc];
     _timerProxy.target = self;
-    
     _timer = [NSTimer scheduledTimerWithTimeInterval:interval target:_timerProxy selector:@selector(timerIntervalAction:) userInfo:callback repeats:repeats];
     return self;
 }
@@ -59,7 +55,8 @@
 //MARK:timer action
 - (void)timerIntervalAction:(NSTimer *)timer
 {
-    !_timerCallback? :_timerCallback(timer);
+    void (^timerCallback)(NSTimer *timer) = timer.userInfo;
+    !timerCallback? :timerCallback(timer);
 }
 
 //MARK:displaylink
@@ -84,12 +81,11 @@
 //MARK:gcdTimer
 - (SNKTimer *)snk_gcdWithInterval:(NSTimeInterval)interval callback:(void (^)(void))callback
 {
-    dispatch_queue_t timerQueue = dispatch_queue_create("timer", DISPATCH_QUEUE_SERIAL);
-    _gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, timerQueue);
+    _gcdTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
     uint64_t start = dispatch_time(DISPATCH_TIME_NOW, 0);
     uint64_t nsec = (uint64_t)(interval * NSEC_PER_SEC / 1000);
     dispatch_source_set_timer(_gcdTimer, start, nsec, 0);
-    dispatch_source_set_event_handler(_gcdTimer, callback);
+    dispatch_source_set_event_handler(_gcdTimer,callback);
     dispatch_resume(_gcdTimer);
     return self;
 }
